@@ -5,7 +5,7 @@
 import pytest
 
 
-from ai_maintainer_git_util import ai_maintainer_git_util
+from ai_maintainer_git_util import git_util
 
 
 @pytest.fixture

@@ -27,37 +27,58 @@ class GitRepo:
                 print(result.stdout.decode())
 
     def clone(self, directory):
-        command = ["git", "-c", self.auth_header, "clone", self.url, directory]
-        result = subprocess.run(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True,
-        )
-        self._print_std_streams(result)
+        command = [
+            "git",
+            "-c",
+            self.auth_header,
+            "clone",
+            self.url,
+            directory,
+            "-b",
+            "main",
+        ]
+        try:
+            result = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+            )
+            self._print_std_streams(result)
+        except subprocess.CalledProcessError as e:
+            print("Error cloning: ", e.stderr.decode())
+            raise e
 
     def fetch(self, directory):
         command = ["git", "-C", directory, "-c", self.auth_header, "fetch"]
         print(" ".join(command))
-        result = subprocess.run(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True,
-        )
-        self._print_std_streams(result)
+        try:
+            result = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+            )
+            self._print_std_streams(result)
+        except subprocess.CalledProcessError as e:
+            print("Error fetching: ", e.stderr.decode())
+            raise e
 
     def pull(self, directory, branch=None):
         command = ["git", "-C", directory, "-c", self.auth_header, "pull", "origin"]
         if branch:
             command.append(branch)
-        result = subprocess.run(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True,
-        )
-        self._print_std_streams(result)
+        try:
+            result = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+            )
+            self._print_std_streams(result)
+        except subprocess.CalledProcessError as e:
+            print("Error pulling: ", e.stderr.decode())
+            raise e
 
     def push(self, directory, branch=None, force=False):
         command = ["git", "-C", directory, "-c", self.auth_header, "push", "origin"]
@@ -65,42 +86,55 @@ class GitRepo:
             command.append(branch)
         if force:
             command.append("--force")
-        result = subprocess.run(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True,
-        )
-        self._print_std_streams(result)
+        try:
+            result = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+            )
+            self._print_std_streams(result)
+        except subprocess.CalledProcessError as e:
+            print("Error pushing: ", e.stderr.decode())
+            raise e
 
     def checkout(self, directory, branch=None):
         if not branch:
             raise ValueError("Branch name must be provided for checkout.")
         command = ["git", "-C", directory, "checkout", branch]
-        result = subprocess.run(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True,
-        )
-        self._print_std_streams(result)
+        try:
+            result = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+            )
+            self._print_std_streams(result)
+        except:
+            print("Error checking out branch: ", branch)
+            raise
 
     def create_branch(self, directory, branch=None):
         if not branch:
             raise ValueError("Branch name must be provided for creating a branch.")
         command = ["git", "-C", directory, "checkout", "-b", branch]
-        result = subprocess.run(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True,
-        )
-        self._print_std_streams(result)
+        try:
+            result = subprocess.run(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+            )
+            self._print_std_streams(result)
+        except:
+            print("Error creating branch: ", branch)
+            raise
 
     def merge(self, directory, branch=None):
         if not branch:
             raise ValueError("Branch name must be provided for merge.")
         command = ["git", "-C", directory, "merge", branch]
+
         result = subprocess.run(
             command,
             stdout=subprocess.PIPE,
