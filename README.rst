@@ -9,8 +9,8 @@ AI Maintainer Git Util
 .. image:: https://img.shields.io/travis/dschonholtz/ai_maintainer_git_util.svg
         :target: https://travis-ci.com/dschonholtz/ai_maintainer_git_util
 
-.. image:: https://readthedocs.org/projects/ai-maintainer-git-util/badge/?version=latest
-        :target: https://ai-maintainer-git-util.readthedocs.io/en/latest/?version=latest
+.. image:: https://docs.ai-maintainer.com
+        :target: https://docs.ai-maintainer.com
         :alt: Documentation Status
 
 
