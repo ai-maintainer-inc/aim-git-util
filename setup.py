@@ -17,7 +17,7 @@ test_requirements = [
 ]
 
 setup(
-    author="Douglas Schonholtz",
+    author="AI Maintainer Inc",
     author_email="douglas@ai-maintainer.com",
     python_requires=">=3.8",
     classifiers=[
@@ -36,13 +36,13 @@ setup(
     long_description=readme + "\n\n" + history,
     include_package_data=True,
     keywords="ai_maintainer_git_util",
-    name="ai_maintainer_git_util",
+    name="aim_git_util",
     packages=find_packages(
-        include=["ai_maintainer_git_util", "ai_maintainer_git_util.*"]
+        include=["aim_git_util", "aim_git_util.*"]
     ),
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/ai-maintainer-inc/ai_maintainer_git_util",
-    version="0.1.1",
+    version='0.1.1',
     zip_safe=False,
 )
