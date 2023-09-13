@@ -16,7 +16,8 @@ AI Maintainer Git Util
 
 
 
-A git util for working with the AI Maintainer go git repo in google cloud
+A git util for working with the AI Maintainer go git repo in google cloud.
+Used in several of our other libraries as well as by us locally.
 
 
 * Free software: MIT license
@@ -26,7 +27,7 @@ A git util for working with the AI Maintainer go git repo in google cloud
 Features
 --------
 
-* TODO
+* Allows for easy forking, cloning and pushing to our remote repositories, via wrapped sub process commands.
 
 Credits
 -------
