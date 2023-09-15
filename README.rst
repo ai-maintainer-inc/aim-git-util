@@ -9,10 +9,7 @@ AI Maintainer Git Util
 .. image:: https://img.shields.io/travis/dschonholtz/ai_maintainer_git_util.svg
         :target: https://travis-ci.com/dschonholtz/ai_maintainer_git_util
 
-.. image:: https://docs.ai-maintainer.com
-        :target: https://docs.ai-maintainer.com
-        :alt: Documentation Status
-
+[Documentation](https://docs.ai-maintainer.com)
 
 
 
@@ -29,10 +26,3 @@ Features
 
 * Allows for easy forking, cloning and pushing to our remote repositories, via wrapped sub process commands.
 
-Credits
--------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
