@@ -9,7 +9,7 @@ AI Maintainer Git Util
 .. image:: https://img.shields.io/travis/dschonholtz/ai_maintainer_git_util.svg
         :target: https://travis-ci.com/dschonholtz/ai_maintainer_git_util
 
-[Documentation](https://docs.ai-maintainer.com)
+Documentation: https://docs.ai-maintainer.com
 
 
 
