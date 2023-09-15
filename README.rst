@@ -6,9 +6,6 @@ AI Maintainer Git Util
 .. image:: https://img.shields.io/pypi/v/ai_maintainer_git_util.svg
         :target: https://pypi.python.org/pypi/ai_maintainer_git_util
 
-.. image:: https://img.shields.io/travis/dschonholtz/ai_maintainer_git_util.svg
-        :target: https://travis-ci.com/dschonholtz/ai_maintainer_git_util
-
 Documentation: https://docs.ai-maintainer.com
 
 
