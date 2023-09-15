@@ -26,7 +26,7 @@ class GitRepo:
             if result.stdout:
                 print(result.stdout.decode())
 
-    def clone(self, directory):
+    def clone(self, directory, branch=None):
         command = [
             "git",
             "-c",
@@ -34,9 +34,9 @@ class GitRepo:
             "clone",
             self.url,
             directory,
-            "-b",
-            "main",
         ]
+        if branch:
+            command += ["-b", branch]
         try:
             result = subprocess.run(
                 command,
@@ -81,9 +81,20 @@ class GitRepo:
             raise e
 
     def push(self, directory, branch=None, force=False):
-        command = ["git", "-C", directory, "-c", self.auth_header, "push", "origin"]
-        if branch:
-            command.append(branch)
+        command = [
+            "git",
+            "-C",
+            directory,
+            "-c",
+            self.auth_header,
+            "push",
+            "origin",
+        ]
+        if not branch:
+            branch = "main"
+
+        command.append(branch)
+
         if force:
             command.append("--force")
         try:
@@ -231,25 +242,3 @@ class GitRepo:
 
 def create_url(host: str, owner: str, repo: str) -> str:
     return f"{host}/{owner}/{repo}"
-
-
-if __name__ == "__main__":
-    GIT_HOST = "http://git-server:8080"
-    CLIENT_USERNAME = "test_user1"
-    CLIENT_PASSWORD = "F@k3awefawefawef"
-    CLIENT_CODE_OWNER = CLIENT_USERNAME
-    CLIENT_CODE_REPO = "repo1"
-    OPERATOR_USERNAME = "test_user2"
-    OPERATOR_PASSWORD = "F@k3awefawefawef"
-    OPERATOR_CODE_OWNER = OPERATOR_USERNAME
-    OPERATOR_CODE_REPO = "repo2"
-    TEMP_DIR = "./deleteme"
-
-    url = create_url(GIT_HOST, OPERATOR_CODE_OWNER, OPERATOR_CODE_REPO)
-    gitrepo = GitRepo(
-        url,
-        OPERATOR_USERNAME,
-        OPERATOR_PASSWORD,
-    )
-    path = os.path.join(TEMP_DIR, CLIENT_CODE_REPO)
-    gitrepo.clone(path)
