@@ -37,12 +37,10 @@ setup(
     include_package_data=True,
     keywords="ai_maintainer_git_util",
     name="aim_git_util",
-    packages=find_packages(
-        include=["aim_git_util", "aim_git_util.*"]
-    ),
+    packages=find_packages(include=["aim_git_util", "aim_git_util.*"]),
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/ai-maintainer-inc/ai_maintainer_git_util",
-    version='0.1.1',
+    version="0.1.2",
     zip_safe=False,
 )
