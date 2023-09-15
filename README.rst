@@ -18,7 +18,6 @@ Used in several of our other libraries as well as by us locally.
 
 
 * Free software: MIT license
-* Documentation: https://ai-maintainer-git-util.readthedocs.io.
 
 
 Features
